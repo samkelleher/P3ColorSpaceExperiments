@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import gm from './GraphicsMagic';
+import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
 
 const walkSync = (dir, filesFound, parent = '') => {
     const files = fs.readdirSync(dir);
@@ -39,15 +39,10 @@ filesToQuery.map(originalFileName => {
     console.log(`Starting ${originalFileName}`);
     const fullPath = path.resolve(__dirname, `../images/${originalFileName}`);
     const imageStream = ReadBlobFromLocal(fullPath);
-    let imageTransformer = gm(imageStream, originalFileName);
 
-    imageTransformer.identify((error, value) => {
-        if (error) {
-            console.log(error);
-        }
-        if (value) {
-            console.log(value);
-        }
+    TestWithGraphicsMagick({
+        originalFileName,
+        imageStream
     });
 
     console.log(`Finished ${originalFileName}`);
