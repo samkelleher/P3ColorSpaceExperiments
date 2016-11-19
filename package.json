@@ -1,0 +1,19 @@
+{
+  "name": "ExperimentsWithGraphicsMagick",
+  "version": "1.0.0",
+  "description": "Experiments reading metadata and color space info from image files.",
+  "main": "index.js",
+  "author": "Sam Kelleher",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.3.2",
+    "exif": "^0.6.0",
+    "gm": "^1.23.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "flow-bin": "^0.35.0"
+  }
+}

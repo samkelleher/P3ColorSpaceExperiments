@@ -1,0 +1,39 @@
+env:
+  browser: false
+  es6: true
+  amd: true
+  node: true
+extends:
+  - 'airbnb-base'
+parserOptions:
+  ecmaFeatures:
+    jsx: false
+    modules: true
+    globalReturn: true
+  sourceType: module
+rules:
+  indent:
+    - error
+    - 4
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
+  comma-dangle:
+    - error
+    - never
+  import/no-extraneous-dependencies:
+    - off
+  new-cap:
+    - error
+    - capIsNew: false
+  arrow-parens:
+    - error
+    - as-needed
+  id-length:
+    - error
