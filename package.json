@@ -14,7 +14,8 @@
   "dependencies": {
     "debug": "^2.3.2",
     "exif": "^0.6.0",
-    "gm": "^1.23.0"
+    "gm": "^1.23.0",
+    "sharp": "^0.16.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

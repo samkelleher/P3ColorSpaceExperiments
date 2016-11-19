@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
+import TestWithSharp from './sharp/TestWithSharp';
 
 const walkSync = (dir, filesFound, parent = '') => {
     const files = fs.readdirSync(dir);
@@ -38,11 +39,14 @@ walkSync(images, filesToQuery);
 filesToQuery.map(originalFileName => {
     console.log(`Starting ${originalFileName}`);
     const fullPath = path.resolve(__dirname, `../images/${originalFileName}`);
-    const imageStream = ReadBlobFromLocal(fullPath);
 
     TestWithGraphicsMagick({
         originalFileName,
-        imageStream
+        imageStream: ReadBlobFromLocal(fullPath)
+    });
+
+    TestWithSharp({
+        imageStream: ReadBlobFromLocal(fullPath)
     });
 
     console.log(`Finished ${originalFileName}`);
