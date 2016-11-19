@@ -5,6 +5,7 @@ env:
   node: true
 extends:
   - 'airbnb-base'
+parser: 'babel-eslint'
 parserOptions:
   ecmaFeatures:
     jsx: false

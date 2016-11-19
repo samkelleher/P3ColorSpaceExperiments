@@ -2,18 +2,36 @@
   "name": "ExperimentsWithGraphicsMagick",
   "version": "1.0.0",
   "description": "Experiments reading metadata and color space info from image files.",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Sam Kelleher",
   "license": "MIT",
+  "scripts": {
+    "test": "babel-node spec/run.js",
+    "jasmine": "jasmine",
+    "dev": "npm run start",
+    "start": "DEBUG=App:* NODE_ENV=development babel-node src/index"
+  },
   "dependencies": {
     "debug": "^2.3.2",
     "exif": "^0.6.0",
     "gm": "^1.23.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
     "eslint": "^3.10.2",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
-    "flow-bin": "^0.35.0"
+    "flow-bin": "^0.35.0",
+    "jasmine": "^2.5.2"
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs",
+      "transform-async-to-generator"
+    ]
   }
 }
