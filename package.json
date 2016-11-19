@@ -1,10 +1,10 @@
 {
-  "name": "ExperimentsWithGraphicsMagick",
+  "name": "@samkelleher/P3ColorSpaceExperiments",
   "version": "1.0.0",
   "description": "Experiments reading metadata and color space info from image files.",
   "main": "src/index.js",
   "author": "Sam Kelleher",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "scripts": {
     "test": "babel-node spec/run.js",
     "jasmine": "jasmine",
