@@ -1086,6 +1086,10 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+icc@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/icc/-/icc-0.0.2.tgz#6f3036fcba9448662165a044a55b3bc9a1947ae5"
+
 ignore@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.2.0.tgz#8d88f03c3002a0ac52114db25d2c673b0bf1e435"

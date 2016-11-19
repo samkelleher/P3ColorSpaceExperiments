@@ -10,16 +10,14 @@ const walkSync = (dir, filesFound, parent = '') => {
         const fullPath = `${dir}/${file}`;
         if (fs.statSync(fullPath).isDirectory()) {
             filesEdited = walkSync(fullPath, filesFound, `${(parent.length ? `${parent}/` : '')}${file}`);
-        } else {
+        } else if (file !== 'README.md' && file !== '.DS_Store') {
             filesEdited.push(`${(parent.length ? `${parent}/` : '')}${file}`);
         }
     });
     return filesEdited;
 };
 
-const ReadBlobFromLocal = (fullPath) => {
-    console.log(`Creating read stream from ${fullPath}`);
-
+const ReadBlobFromLocal = fullPath => {
     let result = null;
 
     try {
@@ -36,16 +34,16 @@ const images = path.resolve(__dirname, '../images');
 const filesToQuery = [];
 walkSync(images, filesToQuery);
 
-filesToQuery.map(originalFileName => {
+filesToQuery.map(async originalFileName => {
     console.log(`Starting ${originalFileName}`);
     const fullPath = path.resolve(__dirname, `../images/${originalFileName}`);
 
-    TestWithGraphicsMagick({
+    const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
         originalFileName,
         imageStream: ReadBlobFromLocal(fullPath)
     });
 
-    TestWithSharp({
+    const testWithSharpResults = await TestWithSharp({
         imageStream: ReadBlobFromLocal(fullPath)
     });
 
