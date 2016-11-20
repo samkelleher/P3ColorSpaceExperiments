@@ -4,6 +4,8 @@ export default function ({ imageStream, fileName }) {
     return new Promise((resolve, reject) => {
         const imageTransformer = gm(imageStream, fileName);
 
+        imageTransformer.profile();
+
         imageTransformer.identify((error, value) => {
             if (error) {
                 console.log(error);
@@ -14,15 +16,17 @@ export default function ({ imageStream, fileName }) {
 
             const iccProfile = value.Profiles['Profile-icc'];
 
+            const deviceMake = value.Properties['exif:Make'];
+            const deviceModel = value.Properties['exif:Model'];
             const result = {
                 library: {
                     metadata: value
                 },
                 width: value.size.width,
                 height: value.size.height,
-                colorProfile: iccProfile ? iccProfile : 'No Profile',
+                colorProfile: iccProfile || 'No Profile',
                 colorSpaceName: value.Colorspace,
-                device: `${value.Properties['exif:Make']} ${value.Properties['exif:Model']}`,
+                device: deviceMake && deviceModel ? `${value.Properties['exif:Make']} ${value.Properties['exif:Model']}` : 'Unknown',
                 libraryName: 'GM'
             };
 
