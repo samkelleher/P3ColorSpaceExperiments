@@ -8,6 +8,7 @@
   "scripts": {
     "test": "babel-node spec/index.js",
     "jasmine": "jasmine",
+    "flow": "flow",
     "dev": "npm run start",
     "start": "DEBUG=App:* NODE_ENV=development babel-node src/index"
   },
@@ -24,6 +25,7 @@
     "babel-eslint": "^7.1.1",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
     "eslint": "^3.10.2",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
@@ -33,7 +35,8 @@
   "babel": {
     "plugins": [
       "transform-es2015-modules-commonjs",
-      "transform-async-to-generator"
+      "transform-async-to-generator",
+      "transform-flow-strip-types"
     ]
   }
 }

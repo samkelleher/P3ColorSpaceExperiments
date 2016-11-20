@@ -1,36 +1,14 @@
+// @flow
 import path from 'path';
-import fs from 'fs';
+import WalkSync from './WalkSync';
 import TestFile from './TestFile';
-
-const walkSync = (dir, filesFound, parent = '') => {
-    const files = fs.readdirSync(dir);
-    let filesEdited = filesFound;
-    files.forEach(file => {
-        const fullPath = `${dir}/${file}`;
-        if (fs.statSync(fullPath).isDirectory()) {
-            filesEdited = walkSync(fullPath, filesFound, `${(parent.length ? `${parent}/` : '')}${file}`);
-        } else if (file !== 'README.md' && file !== '.DS_Store') {
-            filesEdited.push(`${(parent.length ? `${parent}/` : '')}${file}`);
-        }
-    });
-    return filesEdited;
-};
 
 const images = path.resolve(__dirname, '../images');
 
 const filesToQuery = [];
-walkSync(images, filesToQuery);
+WalkSync(images, filesToQuery);
 
-// const results = filesToQuery.map(async fileName => {
-//     const fullPath = path.resolve(__dirname, `../images/${fileName}`);
-//     const fullResults = await TestFile({
-//         fullPath,
-//         fileName
-//     });
-//     return fullResults;
-// });
-
-const testEveryFile = async function testEveryFile(files) {
+const testEveryFile = async function testEveryFile(files): Promise<Array<Object>> {
     const results = [];
     for (const fileName of files) {
         const fullPath = path.resolve(__dirname, `../images/${fileName}`);
