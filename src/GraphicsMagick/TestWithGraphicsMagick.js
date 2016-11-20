@@ -2,6 +2,7 @@ import gm from './GraphicsMagic';
 
 export default function ({ imageStream, fileName }) {
     return new Promise((resolve, reject) => {
+        const started = process.hrtime();
         const imageTransformer = gm(imageStream, fileName);
 
         imageTransformer.profile();
@@ -27,7 +28,8 @@ export default function ({ imageStream, fileName }) {
                 colorProfile: iccProfile || 'No Profile',
                 colorSpaceName: value.Colorspace,
                 device: deviceMake && deviceModel ? `${value.Properties['exif:Make']} ${value.Properties['exif:Model']}` : 'Unknown',
-                libraryName: 'GM'
+                libraryName: 'GM',
+                count: process.hrtime(started)
             };
 
             resolve(result);

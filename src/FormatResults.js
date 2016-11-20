@@ -1,15 +1,8 @@
 import Table from 'cli-table';
 
-type TestFileResults = {
-    graphicsMagic: Object,
-    sharp: Object,
-    fileName: string,
-    fullPath: string
-}
-
 export default function FormatResults(results) {
     const table = new Table({
-        head: ['File', 'Method', 'Resolution (WxH)', 'Device', 'Color Space', 'Color Profile']
+        head: ['File', 'Method', 'Resolution (WxH)', 'Device', 'Color Space', 'Color Profile', 'Time']
     });
 
     // width: value.size.width,
@@ -18,16 +11,15 @@ export default function FormatResults(results) {
     //     colorSpaceName: value.Colorspace,
     //     device: `${value.Properties['exif:Make']} ${value.Properties['exif:Model']}`
 
-    const formatResultRow = (result, library) => {
-        return [
-            result.fileName,
-            library.libraryName,
-            `${library.width} x ${library.height}`,
-            library.device,
-            library.colorSpaceName,
-            library.colorProfile
-        ];
-    };
+    const formatResultRow = (result, library) => [
+        result.fileName,
+        library.libraryName,
+        `${library.width} x ${library.height}`,
+        library.device,
+        library.colorSpaceName,
+        library.colorProfile,
+        `${(library.count[0] * 1e9) + library.count[1]} (${library.count[0]}s ${library.count[1] / 1000000}ms)`
+    ];
 
     results.forEach(result => {
         if (result.graphicsMagic) {

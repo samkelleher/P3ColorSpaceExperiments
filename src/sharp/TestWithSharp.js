@@ -2,7 +2,8 @@ import sharp from 'sharp';
 import icc from 'icc';
 
 export default async function TestWithSharp({ imageStream }) {
-    const image = sharp();
+    const started = process.hrtime();
+    const image = sharp(imageStream);
 
     // try {
     //     image = sharp(imageStream);
@@ -11,7 +12,7 @@ export default async function TestWithSharp({ imageStream }) {
     //     return;
     // }
 
-    imageStream.pipe(image);
+    //imageStream.pipe(image);
 
     const metadata = await image.metadata();
     let iccProfile;
@@ -39,6 +40,7 @@ export default async function TestWithSharp({ imageStream }) {
         colorProfile: metadata.hasProfile && metadata.icc ? (iccProfile ? (iccProfile.description || 'Profile missing name') : 'Profile did not parse.') : 'No Profile',
         colorSpaceName: metadata.space,
         device: 'Unknown',
-        libraryName: 'Sharp'
+        libraryName: 'Sharp',
+        count: process.hrtime(started)
     };
 }
