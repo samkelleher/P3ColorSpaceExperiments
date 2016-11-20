@@ -2,6 +2,7 @@
 import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
 import TestWithSharp from './sharp/TestWithSharp';
 import ReadBlobFromLocal from './ReadBlobFromLocal';
+import ReadBufferFromLocal from './ReadBufferFromLocal';
 
 type TestFileArgs = {
     fileName: string,
@@ -21,11 +22,11 @@ export default async function TestFile({
 
     const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
         fileName,
-        imageStream: ReadBlobFromLocal(fullPath)
+        imageStream: await ReadBlobFromLocal(fullPath)
     });
 
     const testWithSharpResults = await TestWithSharp({
-        imageStream: ReadBlobFromLocal(fullPath)
+        imageStream: await ReadBufferFromLocal(fullPath)
     });
 
     console.log(`Finished ${fileName}`);
