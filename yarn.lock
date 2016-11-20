@@ -804,6 +804,10 @@ event-emitter@~0.3.4:
     d "~0.1.1"
     es5-ext "~0.10.7"
 
+exif-reader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/exif-reader/-/exif-reader-1.0.1.tgz#6d13ff517dbdb35fe36a2f044d2898c275cfdf18"
+
 exif@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/exif/-/exif-0.6.0.tgz#60a62668076542cb7e4f57199d4ac6f37d2c5f4a"
