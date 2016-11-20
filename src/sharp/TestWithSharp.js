@@ -11,15 +11,15 @@ export async function GetExif(exifBuffer) {
 export default async function TestWithSharp({ imageStream, processExif = true }) {
     const started = process.hrtime();
 
-    // const resizeResult = await sharp(imageStream)
-    //     .withoutEnlargement()
-    //     .resize(900, 900)
-    //     .max()
-    //     .withMetadata()
-    //     .toFormat('jpeg')
-    //     .toBuffer();
+    const resizeResult = await sharp(imageStream)
+        .withoutEnlargement()
+        .resize(900, 900)
+        .max()
+        .withMetadata()
+        .toFormat('jpeg')
+        .toBuffer();
 
-    const image = sharp(imageStream);
+    const image = sharp(resizeResult);
 
     // try {
     //     image = sharp(imageStream);
