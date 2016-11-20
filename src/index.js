@@ -9,7 +9,14 @@ const images = path.resolve(__dirname, '../images');
 const filesToQuery = [];
 WalkSync(images, filesToQuery);
 
-const testEveryFile = async function testEveryFile(files): Promise<Array<Object>> {
+type TestFileResults = {
+    graphicsMagic: ?Object,
+    sharp: ?Object,
+    fileName: string,
+    fullPath: string
+}
+
+const testEveryFile = async function testEveryFile(files): Promise<Array<TestFileResults>> {
     const results = [];
     for (const fileName of files) {
         const fullPath = path.resolve(__dirname, `../images/${fileName}`);

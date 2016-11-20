@@ -8,8 +8,8 @@ type TestFileArgs = {
     fullPath: string
 }
 type TestFileResults = {
-    graphicsMagic: Object,
-    sharp: Object,
+    graphicsMagic: ?Object,
+    sharp: ?Object,
     fileName: string,
     fullPath: string
 }

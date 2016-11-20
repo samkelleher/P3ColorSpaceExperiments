@@ -30,7 +30,15 @@ export default async function TestWithSharp({ imageStream }) {
     }
 
     return {
-        metadata,
-        iccProfile
+        library: {
+            metadata,
+            iccProfile
+        },
+        width: metadata.width,
+        height: metadata.height,
+        colorProfile: metadata.hasProfile && metadata.icc ? (iccProfile ? (iccProfile.description || 'Profile missing name') : 'Profile did not parse.') : 'No Profile',
+        colorSpaceName: metadata.space,
+        device: 'Unknown',
+        libraryName: 'Sharp'
     };
 }

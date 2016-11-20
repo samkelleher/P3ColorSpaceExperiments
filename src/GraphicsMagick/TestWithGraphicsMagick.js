@@ -11,7 +11,20 @@ export default function ({ imageStream, fileName }) {
                 return;
             }
             console.log(value);
-            resolve(value);
+
+            const result = {
+                library: {
+                    metadata: value
+                },
+                width: value.size.width,
+                height: value.size.height,
+                colorProfile: 'Unknown',
+                colorSpaceName: value.Colorspace,
+                device: `${value.Properties['exif:Make']} ${value.Properties['exif:Model']}`,
+                libraryName: 'GM'
+            };
+
+            resolve(result);
         });
     });
 }
