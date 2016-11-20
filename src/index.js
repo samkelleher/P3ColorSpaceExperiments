@@ -1,7 +1,6 @@
-import fs from 'fs';
 import path from 'path';
-import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
-import TestWithSharp from './sharp/TestWithSharp';
+import fs from 'fs';
+import TestFile from './TestFile';
 
 const walkSync = (dir, filesFound, parent = '') => {
     const files = fs.readdirSync(dir);
@@ -17,35 +16,35 @@ const walkSync = (dir, filesFound, parent = '') => {
     return filesEdited;
 };
 
-const ReadBlobFromLocal = fullPath => {
-    let result = null;
-
-    try {
-        result = fs.createReadStream(fullPath);
-    } catch (ex) {
-        console.log(`Failed to create read stream of ${fullPath}`, ex);
-    }
-
-    return result;
-};
-
 const images = path.resolve(__dirname, '../images');
 
 const filesToQuery = [];
 walkSync(images, filesToQuery);
 
-filesToQuery.map(async originalFileName => {
-    console.log(`Starting ${originalFileName}`);
-    const fullPath = path.resolve(__dirname, `../images/${originalFileName}`);
+// const results = filesToQuery.map(async fileName => {
+//     const fullPath = path.resolve(__dirname, `../images/${fileName}`);
+//     const fullResults = await TestFile({
+//         fullPath,
+//         fileName
+//     });
+//     return fullResults;
+// });
 
-    const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
-        originalFileName,
-        imageStream: ReadBlobFromLocal(fullPath)
+const testEveryFile = async function testEveryFile(files) {
+    const results = [];
+    for (const fileName of files) {
+        const fullPath = path.resolve(__dirname, `../images/${fileName}`);
+        const fullResults = await TestFile({
+            fullPath,
+            fileName
+        });
+        results.push(fullResults);
+    }
+    return results;
+};
+
+testEveryFile(filesToQuery)
+    .then(results => {
+        console.log(`There are ${results.length} results completed.`);
     });
 
-    const testWithSharpResults = await TestWithSharp({
-        imageStream: ReadBlobFromLocal(fullPath)
-    });
-
-    console.log(`Finished ${originalFileName}`);
-});
