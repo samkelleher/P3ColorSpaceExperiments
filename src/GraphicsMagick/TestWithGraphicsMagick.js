@@ -12,13 +12,15 @@ export default function ({ imageStream, fileName }) {
             }
             console.log(value);
 
+            const iccProfile = value.Profiles['Profile-icc'];
+
             const result = {
                 library: {
                     metadata: value
                 },
                 width: value.size.width,
                 height: value.size.height,
-                colorProfile: 'Unknown',
+                colorProfile: iccProfile ? iccProfile : 'No Profile',
                 colorSpaceName: value.Colorspace,
                 device: `${value.Properties['exif:Make']} ${value.Properties['exif:Model']}`,
                 libraryName: 'GM'
