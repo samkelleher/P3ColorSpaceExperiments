@@ -2,6 +2,7 @@
 import path from 'path';
 import WalkSync from './WalkSync';
 import TestFile from './TestFile';
+import FormatResults from './FormatResults';
 
 const images = path.resolve(__dirname, '../images');
 
@@ -24,5 +25,8 @@ const testEveryFile = async function testEveryFile(files): Promise<Array<Object>
 testEveryFile(filesToQuery)
     .then(results => {
         console.log(`There are ${results.length} results completed.`);
+
+        const table = FormatResults(results);
+        console.log(table.toString());
     });
 

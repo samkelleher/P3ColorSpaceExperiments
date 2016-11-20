@@ -9,7 +9,9 @@ type TestFileArgs = {
 }
 type TestFileResults = {
     graphicsMagic: Object,
-    sharp: Object
+    sharp: Object,
+    fileName: string,
+    fullPath: string
 }
 export default async function TestFile({
     fileName,
@@ -30,6 +32,8 @@ export default async function TestFile({
 
     return {
         graphicsMagic: testWithGraphicsMagickResults,
-        sharp: testWithSharpResults
+        sharp: testWithSharpResults,
+        fileName,
+        fullPath
     };
 }

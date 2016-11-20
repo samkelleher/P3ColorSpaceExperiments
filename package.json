@@ -13,6 +13,7 @@
     "start": "DEBUG=App:* NODE_ENV=development babel-node src/index"
   },
   "dependencies": {
+    "cli-table": "^0.3.1",
     "debug": "^2.3.2",
     "exif": "^0.6.0",
     "gm": "^1.23.0",
