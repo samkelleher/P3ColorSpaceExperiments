@@ -9,8 +9,7 @@ type TestFileArgs = {
     fullPath: string
 }
 type TestFileResults = {
-    graphicsMagic: ?Object,
-    sharp: ?Object,
+    results: Array<Object>,
     fileName: string,
     fullPath: string
 }
@@ -20,20 +19,31 @@ export default async function TestFile({
 }: TestFileArgs): Promise<TestFileResults> {
     console.log(`Starting ${fileName}`);
 
-    const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
-        fileName,
-        imageStream: await ReadBlobFromLocal(fullPath)
-    });
+    const results = [];
 
-    const testWithSharpResults = await TestWithSharp({
-        imageStream: await ReadBufferFromLocal(fullPath)
-    });
+    // try {
+    //     const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
+    //         fileName,
+    //         imageStream: await ReadBlobFromLocal(fullPath)
+    //     });
+    //     results.push(testWithGraphicsMagickResults);
+    // } catch (exception) {
+    //     console.log(exception);
+    // }
+
+    try {
+        const testWithSharpResults = await TestWithSharp({
+            imageStream: await ReadBufferFromLocal(fullPath)
+        });
+        results.push(testWithSharpResults);
+    } catch (exception) {
+        console.log(exception);
+    }
 
     console.log(`Finished ${fileName}`);
 
     return {
-        graphicsMagic: testWithGraphicsMagickResults,
-        sharp: testWithSharpResults,
+        results,
         fileName,
         fullPath
     };

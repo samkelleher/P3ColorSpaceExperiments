@@ -22,13 +22,9 @@ export default function FormatResults(results) {
     ];
 
     results.forEach(result => {
-        if (result.graphicsMagic) {
-            table.push(formatResultRow(result, result.graphicsMagic));
-        }
-
-        if (result.sharp) {
-            table.push(formatResultRow(result, result.sharp));
-        }
+        result.results.forEach(libraryResult => {
+            table.push(formatResultRow(result, libraryResult));
+        });
     });
 
     return table;

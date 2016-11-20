@@ -11,8 +11,7 @@ export default function app() {
     WalkSync(images, filesToQuery);
 
     type TestFileResults = {
-        graphicsMagic: ?Object,
-        sharp: ?Object,
+        results: Array<Object>,
         fileName: string,
         fullPath: string
     }
