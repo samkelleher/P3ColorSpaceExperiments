@@ -6,7 +6,7 @@
   "author": "Sam Kelleher",
   "license": "GPL-3.0",
   "scripts": {
-    "test": "babel-node spec/run.js",
+    "test": "babel-node spec/index.js",
     "jasmine": "jasmine",
     "dev": "npm run start",
     "start": "DEBUG=App:* NODE_ENV=development babel-node src/index"
