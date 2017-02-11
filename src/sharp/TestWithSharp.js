@@ -3,7 +3,7 @@ import icc from 'icc';
 import exifReader from 'exif-reader';
 
 export async function GetExif(exifBuffer) {
-    return await new Promise((resolve) => {
+    return new Promise(resolve => {
         resolve(exifReader(exifBuffer));
     });
 }
@@ -64,12 +64,10 @@ export default async function TestWithSharp({ imageStream, processExif = true })
         if (iccProfile) {
             if (iccProfile.description) {
                 colorProfile = iccProfile.description;
+            } else if (iccProfile.cmm) {
+                colorProfile = `${iccProfile.cmm} (Connection: ${iccProfile.connectionSpace})`;
             } else {
-                if (iccProfile.cmm) {
-                    colorProfile = `${iccProfile.cmm} (Connection: ${iccProfile.connectionSpace})`;
-                } else {
-                    colorProfile = 'Profile missing name';
-                }
+                colorProfile = 'Profile missing name';
             }
         } else {
             colorProfile = 'Profile did not parse.';

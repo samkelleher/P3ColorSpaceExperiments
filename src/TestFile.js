@@ -21,15 +21,15 @@ export default async function TestFile({
 
     const results = [];
 
-    // try {
-    //     const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
-    //         fileName,
-    //         imageStream: await ReadBlobFromLocal(fullPath)
-    //     });
-    //     results.push(testWithGraphicsMagickResults);
-    // } catch (exception) {
-    //     console.log(exception);
-    // }
+    try {
+        const testWithGraphicsMagickResults = await TestWithGraphicsMagick({
+            fileName,
+            imageStream: await ReadBlobFromLocal(fullPath)
+        });
+        results.push(testWithGraphicsMagickResults);
+    } catch (exception) {
+        console.log(exception);
+    }
 
     try {
         const testWithSharpResults = await TestWithSharp({
