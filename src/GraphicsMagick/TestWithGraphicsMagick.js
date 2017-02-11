@@ -1,6 +1,6 @@
 import gm from './GraphicsMagic';
 
-export default function ({ imageStream, fileName }) {
+export default async function TestWithGraphicsMagick({ imageStream, fileName }) {
     return new Promise((resolve, reject) => {
         const started = process.hrtime();
         const imageTransformer = gm(imageStream, fileName);
