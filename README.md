@@ -16,7 +16,7 @@ The images will be processed using:
 * [GraphicsMagick](https://github.com/aheckmann/gm) - see [TestWithGraphicsMagick.js](./src/GraphicsMagick/TestWithGraphicsMagick.js)
 * [Sharp](https://github.com/lovell/sharp)  - see [TestWithSharp.js](./src/sharp/TestWithSharp.js)
 
-**:warning: GraphicsMagick is being used with [ImageMagick](https://www.imagemagick.org/s) enabled. So you might need to install this at system level first, for example, via brew.**
+**:warning: GraphicsMagick is being used with [ImageMagick](https://www.imagemagick.org/) enabled. So you might need to install this at system level first, for example, via brew.**
 
 ## Goals :microscope:
 
@@ -39,6 +39,11 @@ images and downgrade them to sRGB - especially if the images might end up being 
 So we should detect and preserve images that have been exported using P3.
 
 This project is a small test to determine how to do that using NodeJS and GraphicsMagick.
+
+Further reading:
+
+* [Bringing Wide Color to Instagram](https://engineering.instagram.com/bringing-wide-color-to-instagram-5a5481802d7d)  
+* [Improving Color on the Web](https://webkit.org/blog/6682/improving-color-on-the-web/)
 
 ## Current Situation
 
