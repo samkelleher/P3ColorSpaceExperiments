@@ -1,6 +1,9 @@
 import sharp from 'sharp';
+import Debug from 'debug';
 import icc from 'icc';
 import exifReader from 'exif-reader';
+
+const debug = Debug('App:TestWithSharp');
 
 export async function GetExif(exifBuffer) {
     return new Promise(resolve => {
@@ -9,6 +12,7 @@ export async function GetExif(exifBuffer) {
 }
 
 export default async function TestWithSharp({ imageStream, processExif = true }) {
+    debug('Starting');
     const started = process.hrtime();
 
     const resizeResult = await sharp(imageStream)
@@ -83,6 +87,8 @@ export default async function TestWithSharp({ imageStream, processExif = true })
             device = `${deviceMake} ${deviceModel}`;
         }
     }
+
+    debug('Finished');
 
     return {
         library: {

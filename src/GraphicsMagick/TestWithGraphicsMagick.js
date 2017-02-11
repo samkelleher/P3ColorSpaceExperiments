@@ -1,7 +1,11 @@
+import Debug from 'debug';
 import gm from './GraphicsMagic';
+
+const debug = Debug('App:TestWithGraphicsMagick');
 
 export default async function TestWithGraphicsMagick({ imageStream, fileName }) {
     return new Promise((resolve, reject) => {
+        debug(`Starting ${fileName}`);
         const started = process.hrtime();
         const imageTransformer = gm(imageStream, fileName);
 
@@ -16,6 +20,10 @@ export default async function TestWithGraphicsMagick({ imageStream, fileName }) 
             console.log(value);
 
             const iccProfile = value.Profiles['Profile-icc'];
+
+            if (iccProfile) {
+                debug(`[iccProfile] length ${iccProfile.length}`);
+            }
 
             const deviceMake = value.Properties['exif:Make'];
             const deviceModel = value.Properties['exif:Model'];
@@ -32,6 +40,7 @@ export default async function TestWithGraphicsMagick({ imageStream, fileName }) 
                 count: process.hrtime(started)
             };
 
+            debug(`Finished ${fileName}`);
             resolve(result);
         });
     });

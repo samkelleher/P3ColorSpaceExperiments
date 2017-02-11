@@ -1,8 +1,11 @@
 // @flow
 import path from 'path';
+import Debug from 'debug';
 import WalkSync from './WalkSync';
 import TestFile from './TestFile';
 import FormatResults from './FormatResults';
+
+const debug = Debug('App:Main');
 
 export default function app() {
     const images = path.resolve(__dirname, '../images');
@@ -30,13 +33,13 @@ export default function app() {
     };
 
     if (!filesToQuery.length) {
-        console.log('Place some image files in the ./images directory to test.');
+        debug('Place some image files in the ./images directory to test.');
         return;
     }
 
     testEveryFile(filesToQuery)
         .then(results => {
-            console.log(`There are ${results.length} results completed.`);
+            debug(`There are ${results.length} results completed.`);
 
             const table = FormatResults(results);
             console.log(table.toString());

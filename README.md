@@ -16,7 +16,9 @@ The images will be processed using:
 * [GraphicsMagick](https://github.com/aheckmann/gm) - see [TestWithGraphicsMagick.js](./src/GraphicsMagick/TestWithGraphicsMagick.js)
 * [Sharp](https://github.com/lovell/sharp)  - see [TestWithSharp.js](./src/sharp/TestWithSharp.js)
 
-## Goals
+**:warning: GraphicsMagick is being used with [ImageMagick](https://www.imagemagick.org/s) enabled. So you might need to install this at system level first, for example, via brew.**
+
+## Goals :microscope:
 
 The objective is to test these libraries and their performance with the following goals.
 

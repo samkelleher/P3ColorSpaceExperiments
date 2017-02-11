@@ -1,8 +1,11 @@
 // @flow
+import Debug from 'debug';
 import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
 import TestWithSharp from './sharp/TestWithSharp';
 import ReadBlobFromLocal from './ReadBlobFromLocal';
 import ReadBufferFromLocal from './ReadBufferFromLocal';
+
+const debug = Debug('App:TestFile');
 
 type TestFileArgs = {
     fileName: string,
@@ -17,7 +20,7 @@ export default async function TestFile({
     fileName,
     fullPath
 }: TestFileArgs): Promise<TestFileResults> {
-    console.log(`Starting ${fileName}`);
+    debug(`Starting Tests for ${fileName}`);
 
     const results = [];
 
@@ -28,6 +31,7 @@ export default async function TestFile({
         });
         results.push(testWithGraphicsMagickResults);
     } catch (exception) {
+        debug('Caught TestWithGraphicsMagick Exception:');
         console.log(exception);
     }
 
@@ -37,10 +41,11 @@ export default async function TestFile({
         });
         results.push(testWithSharpResults);
     } catch (exception) {
+        debug('Caught TestWithSharp Exception:');
         console.log(exception);
     }
 
-    console.log(`Finished ${fileName}`);
+    debug(`Finished Testing ${fileName}`);
 
     return {
         results,
