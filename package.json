@@ -15,25 +15,25 @@
   "dependencies": {
     "cli-table": "^0.3.1",
     "colors": "^1.1.2",
-    "debug": "^2.6.0",
+    "debug": "^2.6.8",
     "exif": "^0.6.0",
     "exif-reader": "^1.0.2",
     "gm": "^1.23.0",
     "icc": "^1.0.0",
-    "sharp": "^0.17.1"
+    "sharp": "^0.18.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-core": "^6.22.1",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^7.1.1",
-    "babel-plugin-transform-async-to-generator": "^6.22.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "eslint": "^3.14.1",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
-    "flow-bin": "^0.38.0",
-    "jasmine": "^2.5.3"
+    "flow-bin": "^0.50.0",
+    "jasmine": "^2.6.0"
   },
   "babel": {
     "plugins": [
