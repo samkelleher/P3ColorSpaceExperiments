@@ -6,7 +6,7 @@ export default function WalkSync(dir, filesFound, parent = '') {
     files.forEach(file => {
         const fullPath = `${dir}/${file}`;
         if (fs.statSync(fullPath).isDirectory()) {
-            filesEdited = walkSync(fullPath, filesFound, `${(parent.length ? `${parent}/` : '')}${file}`);
+            filesEdited = WalkSync(fullPath, filesFound, `${(parent.length ? `${parent}/` : '')}${file}`);
         } else if (file !== 'README.md' && file !== '.DS_Store') {
             filesEdited.push(`${(parent.length ? `${parent}/` : '')}${file}`);
         }

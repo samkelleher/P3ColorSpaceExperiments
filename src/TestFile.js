@@ -1,4 +1,3 @@
-// @flow
 import Debug from 'debug';
 import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
 import TestWithSharp from './sharp/TestWithSharp';
@@ -7,19 +6,10 @@ import ReadBufferFromLocal from './ReadBufferFromLocal';
 
 const debug = Debug('App:TestFile');
 
-type TestFileArgs = {
-    fileName: string,
-    fullPath: string
-}
-type TestFileResults = {
-    results: Array<Object>,
-    fileName: string,
-    fullPath: string
-}
 export default async function TestFile({
     fileName,
     fullPath
-}: TestFileArgs): Promise<TestFileResults> {
+}) {
     debug(`Starting Tests for ${fileName}`);
 
     const results = [];

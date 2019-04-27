@@ -1,4 +1,3 @@
-// @flow
 import path from 'path';
 import Debug from 'debug';
 import WalkSync from './WalkSync';
@@ -13,13 +12,7 @@ export default function app() {
     const filesToQuery = [];
     WalkSync(images, filesToQuery);
 
-    type TestFileResults = {
-        results: Array<Object>,
-        fileName: string,
-        fullPath: string
-    }
-
-    const testEveryFile = async function testEveryFile(files): Promise<Array<TestFileResults>> {
+    const testEveryFile = async function testEveryFile(files) {
         const results = [];
         for (const fileName of files) {
             const fullPath = path.resolve(__dirname, `../images/${fileName}`);
