@@ -16,9 +16,10 @@ export default async function TestWithSharp({ imageStream, processExif = true })
     const started = process.hrtime();
 
     const resizeResult = await sharp(imageStream)
-        .withoutEnlargement()
-        .resize(900, 900)
-        .max()
+        .resize(900, 900, {
+            withoutEnlargement: true,
+            fit: 'contain'
+        })
         .withMetadata()
         .toFormat('jpeg')
         .toBuffer();
