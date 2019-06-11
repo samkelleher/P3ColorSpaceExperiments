@@ -13,10 +13,20 @@ This will load each sample image in the [./images/](./images/) directory and pro
 
 The images will be processed using:
 
-* [GraphicsMagick](https://github.com/aheckmann/gm) - see [TestWithGraphicsMagick.js](./src/GraphicsMagick/TestWithGraphicsMagick.js)
-* [Sharp](https://github.com/lovell/sharp)  - see [TestWithSharp.js](./src/sharp/TestWithSharp.js)
+* [GraphicsMagick](https://github.com/aheckmann/gm) - see [TestWithGraphicsMagick.js](./src/GraphicsMagick/TestWithGraphicsMagick.mjs)
+* [Sharp](https://github.com/lovell/sharp)  - see [TestWithSharp.js](./src/sharp/TestWithSharp.mjs)
 
 **:warning: GraphicsMagick is being used with [ImageMagick](https://www.imagemagick.org/) enabled. So you might need to install this at system level first, for example, via brew.**
+
+## Docker Usage
+
+First, build the included [Dockerfile](Dockerfile), (help method, just run `yarn build`) then run it (`yarn docker`). The Docker
+setup is helpful because it will install the ImageMagick binary so nothing needs to be installed on your system.
+
+```
+docker build -t experiments/p3 .
+docker run --rm -it experiments/p3
+```
 
 ## Goals :microscope:
 
@@ -48,6 +58,4 @@ Further reading:
 ## Current Situation
 
 WebKit (read: Safari) supports being able to render images correctly that have been tagged with P3. Any other images are rendered in sRGB.
-
-
 
