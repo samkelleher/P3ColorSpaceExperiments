@@ -1,13 +1,14 @@
 import path from 'path';
 import Debug from 'debug';
-import WalkSync from './WalkSync';
-import TestFile from './TestFile';
-import FormatResults from './FormatResults';
+import WalkSync from './WalkSync.mjs';
+import TestFile from './TestFile.mjs';
+import FormatResults from './FormatResults.mjs';
 
 const debug = Debug('App:Main');
 
-export default function app() {
-    const images = path.resolve(__dirname, '../images');
+export default async function app() {
+    const cwd = process.cwd();
+    const images = path.resolve(cwd, './images');
 
     const filesToQuery = [];
     WalkSync(images, filesToQuery);
@@ -15,7 +16,7 @@ export default function app() {
     const testEveryFile = async function testEveryFile(files) {
         const results = [];
         for (const fileName of files) {
-            const fullPath = path.resolve(__dirname, `../images/${fileName}`);
+            const fullPath = path.resolve(cwd, `./images/${fileName}`);
             const fullResults = await TestFile({
                 fullPath,
                 fileName
@@ -26,11 +27,10 @@ export default function app() {
     };
 
     if (!filesToQuery.length) {
-        debug('Place some image files in the ./images directory to test.');
-        return;
+        throw new Error('Place some image files in the ./images directory to test.');
     }
 
-    testEveryFile(filesToQuery)
+    await testEveryFile(filesToQuery)
         .then(results => {
             debug(`There are ${results.length} results completed.`);
 
@@ -38,3 +38,4 @@ export default function app() {
             console.log(table.toString());
         });
 }
+

@@ -1,5 +1,5 @@
 import Table from 'cli-table';
-import colors from 'colors/safe';
+import colors from 'colors';
 
 export default function FormatResults(results) {
     const table = new Table({

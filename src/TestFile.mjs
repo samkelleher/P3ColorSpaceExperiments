@@ -1,8 +1,8 @@
 import Debug from 'debug';
-import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick';
-import TestWithSharp from './sharp/TestWithSharp';
-import ReadBlobFromLocal from './ReadBlobFromLocal';
-import ReadBufferFromLocal from './ReadBufferFromLocal';
+import TestWithGraphicsMagick from './GraphicsMagick/TestWithGraphicsMagick.mjs';
+import TestWithSharp from './sharp/TestWithSharp.mjs';
+import ReadBlobFromLocal from './ReadBlobFromLocal.mjs';
+import ReadBufferFromLocal from './ReadBufferFromLocal.mjs';
 
 const debug = Debug('App:TestFile');
 

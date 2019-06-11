@@ -1,5 +1,5 @@
 import Debug from 'debug';
-import gm from './GraphicsMagic';
+import gm from './GraphicsMagic.mjs';
 
 const debug = Debug('App:TestWithGraphicsMagick');
 
