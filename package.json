@@ -1,12 +1,10 @@
 {
-  "name": "P3ColorSpaceExperiments",
-  "version": "1.0.0",
-  "description": "Experiments reading metadata and color space info from image files.",
-  "main": "src/index.js",
-  "author": "Sam Kelleher",
   "license": "GPL-3.0",
+  "engines": {
+    "node" : ">=12"
+  },
+  "private": true,
   "scripts": {
-    "test": "babel-node spec/index.js",
     "start": "DEBUG=App:* NODE_ENV=development node --experimental-modules --no-warnings src/index.mjs",
     "build": "docker build -t experiments/p3 .",
     "docker": "docker run --rm -it experiments/p3"

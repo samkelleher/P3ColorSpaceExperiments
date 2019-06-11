@@ -59,3 +59,7 @@ Further reading:
 
 WebKit (read: Safari) supports being able to render images correctly that have been tagged with P3. Any other images are rendered in sRGB.
 
+## P3 Preview
+Are you on a P3 display right now? If so, you'll see the WebKit in the image below:
+
+![Screenshot](./images/Webkit-logo-P3.png?raw=true "P3 Sample Image")
