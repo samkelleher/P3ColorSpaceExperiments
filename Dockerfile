@@ -7,6 +7,6 @@ RUN yarn install --production --frozen-lockfile
 
 COPY /images /usr/src/app/images
 COPY /profiles /usr/src/app/profiles
-COPY /src /profiles /images /usr/src/app/
+COPY /src /usr/src/app/
 
 ENTRYPOINT ["node", "--experimental-modules", "--no-warnings", "/usr/src/app/index.mjs"]
