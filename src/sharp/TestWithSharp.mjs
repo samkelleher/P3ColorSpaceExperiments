@@ -11,8 +11,8 @@ export async function GetExif(exifBuffer) {
     });
 }
 
-export default async function TestWithSharp({ imageStream, processExif = true }) {
-    debug('Starting');
+export default async function TestWithSharp({ imageStream, processExif = true, fileName }) {
+    debug(`Starting ${fileName}`);
     const started = process.hrtime();
 
     const resizeResult = await sharp(imageStream)
@@ -89,7 +89,7 @@ export default async function TestWithSharp({ imageStream, processExif = true })
         }
     }
 
-    debug('Finished');
+    debug(`Finished ${fileName}`);
 
     return {
         library: {

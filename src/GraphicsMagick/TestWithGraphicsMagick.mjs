@@ -19,7 +19,7 @@ export default async function TestWithGraphicsMagick({ imageStream, fileName }) 
             }
             console.log(value);
 
-            const iccProfile = value.Profiles['Profile-icc'];
+            const iccProfile = value.Profiles && value.Profiles['Profile-icc'];
 
             if (iccProfile) {
                 debug(`[iccProfile] length ${iccProfile.length}`);

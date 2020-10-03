@@ -27,6 +27,7 @@ export default async function TestFile({
 
     try {
         const testWithSharpResults = await TestWithSharp({
+            fileName,
             imageStream: await ReadBufferFromLocal(fullPath)
         });
         results.push(testWithSharpResults);
